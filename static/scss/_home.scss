@@ -1,0 +1,186 @@
+// NEW POST CATEGORY
+.new-posts{
+    margin: 0;
+    padding: 0.3rem;
+    border-bottom: 5px solid $color-primary;
+    &-header {
+        background: linear-gradient(to right, rgb(0, 74, 173, 0.4), rgb(255, 255, 255, 0.4)), url('../img/blog/News_post.svg') no-repeat center; 
+        background-size: cover;
+        padding: 5rem;
+        margin-bottom: 0.5rem;
+    }
+    &-title {
+        font-weight: 700;
+        text-align: center;
+        color: $color-white;
+    }
+}
+
+.mycard {
+    img {
+        height: 200px;
+        width: auto;
+        object-fit: cover;
+    }
+    
+    &-btn {
+        text-decoration: none;
+    }
+}
+.spin-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .spin {
+        margin-top: 1rem;
+        width: 5rem;
+        height: 5rem;
+        border-top: 5px solid $color-primary;
+        border-bottom: 5px solid $color-primary;
+        border-left: 5px solid $color-primary;
+        border-right: 5px solid $color-primary;
+        border-radius: 50%;
+        @include transitionEase;
+        animation: loading 1s ease infinite;
+    }
+    .spin-title {
+        margin-top: 2rem;
+        font-size: 2rem;
+        text-align: center;
+    }
+    .spin-text {
+        font-size: 2rem;
+        font-family: monospace;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 2px solid #000;
+        animation: typing 5s steps(17) infinite;
+        @include transitionEase;
+    }
+}
+
+.pagination {
+    margin-top: 1rem;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        border: 2px solid $color-primary;
+        border-radius: 0.2rem;
+        background-color: $color-white;
+        margin: 5px;
+        padding: 0;
+        border-radius: 20px;
+        @include transitionEase;
+        &:hover {
+            background-color: $color-primary;
+            @include transitionEase;
+        }
+        a {
+            text-decoration: none;
+            color: $color-primary;
+            font-size: 1.5rem;
+            padding: 1rem 1rem;
+            text-transform: capitalize;
+            @include transitionEase;
+            &:hover {
+                color: $color-white;
+                @include transitionEase;
+            }
+        }
+    }
+}
+
+
+.category {
+        margin: 0;
+        padding: 0.3rem;
+        border-bottom: 5px solid $color-primary;
+    &-header {
+        background: linear-gradient(to right, rgb(0, 74, 173, 0.4), rgb(255, 255, 255, 0.4)), url('../img/blog/categories.svg') no-repeat center; 
+        background-size: cover;
+        padding: 5rem;
+        margin-bottom: 0.5rem;
+    }
+    &-title {
+        font-weight: 700;
+        text-align: center;
+        color: $color-white;
+    }
+
+    .categories {
+        border-bottom: 2px solid $color-primary;
+        margin-bottom: 0.5rem;
+        &-name {
+            text-align: center;
+            padding: 2rem;
+            color: $color-white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .categories-post {
+            margin-bottom: 1rem;
+            margin-top: 1rem;
+            .more-btn {
+                text-align: center;
+                a{
+                        border: 2px solid $color-primary;
+                        border-radius: 1rem;
+                        color: $color-primary;
+                        text-decoration: none;
+                        padding: 0.5rem 1rem;
+                        font-size: 1rem;
+                        font-family: monospace;
+                        width: 100%;
+                        font-weight: 600;
+                        transition: all 1s ease-in-out;
+                        &:hover {
+                            background-color: $color-primary;
+                            color: $color-white;
+                            transition: all 1s ease-in-out;
+                        }
+                 }
+                
+            }
+        }
+        .category-post {
+            margin-top: .5rem;
+            margin-bottom: .5rem;
+            a{
+                text-decoration: none;
+                color: $color-primary;
+                .card {
+                    &-body {
+                        color: $color-primary;
+                        background-color: $color-white;
+                        font-weight: 600;
+                        border: 2px solid $color-primary;
+                    }
+                }
+            }
+        }    
+    }
+}
+
+
+
+
+@keyframes loading {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 300px; }
+  }

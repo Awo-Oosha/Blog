@@ -1,0 +1,68 @@
+{% load static %}
+
+
+<footer class="footer mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-5 ">
+                <div class="company-info">
+                    <div class="logo">
+                        <img src="{% static 'img/Logo-white.svg' %}" alt="">
+                        Awo's Blog
+                    </div>
+                    <div class="copyright">
+                        &copy 2023 Company, Inc. All rights reserved.
+                    </div>
+
+                    <div class="sh-txt">
+                        Expand your horizons with our blog. 
+                        Discover knowledge, inspiration, and captivating stories. 
+                        Join our community of curious minds. Feed your intellect, 
+                        ignite your passion, and unlock the power of knowledge.
+                    </div>
+                </div>
+                <div class="social-icons">
+                    <div class="social-icons-title">Connect with us</div>
+                    <a href="https://github.com/Awo-Oosha/Awo-Oosha"><i class="fab fa-github icon"></i></a>
+                    <a href="https://web.facebook.com/profile.php?id=100073282958406"><i class="fab fa-facebook icon"></i></a>
+                    <a href="https://twitter.com/he_is_Awo"><i class="fab fa-twitter icon"></i></a>
+                    <a href="https://www.instagram.com/he_is_awo/"><i class="fab fa-instagram icon"></i></a>
+                    <a href=" https://www.linkedin.com/in/timileyin-okediya-b46357187"><i class="fab fa-linkedin icon"></i></a>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="foot-nav">
+                            <div class="foot-nav-title">Navigations</div>
+                            <div class="foot-nav-list">
+                                <ul>
+                                    <li><a href="{% url 'myblog:blog' %}">Home</a></li>
+                                    <li><a href="#">Category</a></li>
+                                    <li><a href="#">Portfolio</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">About Us</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="foot-category">
+                            <div class="foot-category-title">Categories</div>
+                            <div class="foot-category-list">
+                                <ul>
+                                {% for list in categories %}
+                                    <li><a href="{% url 'myblog:category' list.name%}">{{list.name}}</a></li>
+                                {% endfor %}
+                                </ul>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 developer">
+                Built & Designed By Awo
+            </div>
+        </div>
+    </div>
+</footer>

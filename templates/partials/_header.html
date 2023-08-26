@@ -1,0 +1,49 @@
+{% load static %}
+
+<header class="header">
+    <div class="container">
+        <nav class="mynavbar">
+            <div class="mynavbar-title">
+                <a class="mynavbar-brand" href="{% url 'myblog:blog' %}">
+                    <img src="{% static 'img/logo.svg' %}" alt="Logo" width="50" height="50" class="d-inline-block align-text-center">
+                    Awo's Blog
+                </a>
+            </div>
+
+
+            <div class="hamburger">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+            
+            
+            <div class="mynavbar-links">
+                <ul>
+                    <li><a href="{% url 'myblog:blog' %}">Home</a></li>
+                    <li class="dropdown">
+                        <a>Categories <span><i class="fas fa-chevron-circle-down dropdown-icon"></i></span></a>
+                        <ul data-dropdown-menu>
+                            
+                            {% for item in categories %}
+                                <li class="dropdown-item"><a href="{% url 'myblog:category' item.name %}" class="dropdown-link">{{item.name}}</a></li>
+                            {% endfor %}
+                                
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'myblog:blog' %}">Portfolio</a></li>
+                    <li><a href="{% url 'myblog:blog' %}">Contact</a></li>
+                    <li><a href="{% url 'myblog:blog' %}">About</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="search-container">
+            <form action="{% url 'myblog:search' %}" method="GET" class="search-form">
+                <input type="search" name="query" id="query" placeholder="Search for posts, articles, categories....." required>
+                <button type="submit" class="search-btn"><i class="fas fa-search"></i></button>
+            </form>
+        </div> 
+        </div>
+    </div>
+</header>

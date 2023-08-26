@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block body %}
+<div class="container">
+
+    <div class="row">
+        {% include 'partials/_sidebar.html' %}
+
+        <main class="col-9">
+            <div class="row">
+                <div class="col-12">
+                    <section class="new-posts shadow">
+                        <div class="new-posts-header">
+                            <h2 class="new-posts-title">Latest Posts</h2>
+                        </div>
+                        <div class="row">
+                                {% if posts %}
+                                                    
+                                    {% for item in posts %}
+                                     
+                                    <div class="col-4 mb-4">
+                                        <a href="{% url 'myblog:detail' item.slug %}" class="mycard-btn">
+                                        <div class="card mycard shadow border-0">
+                                            <img src="{{item.myfile.url}}" class="card-img-top" alt="{{item.myfile}}">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{item.title}}</h5>
+                                                <p class="card-text"><small class="text-body-secondary">Uploaded {{item.pub_date}} | by: {{item.author|capfirst}}</small> <span class="badge bg-primary">{{item.category}}</span></p>
+                                                <!-- <p class="card-text mycard-text">{{item.content|slice:":100"}}....</p> -->
+                                            </div>                                
+                                          </div>
+                                        </a>
+                                    </div>
+            
+                                    {% endfor %}
+            
+                                    {% else %} 
+                                    <div class="col-12">
+                                        <div class="spin-container">
+                                            
+                                                <span class="spin"></span>
+                                
+                                              <p class="spin-title">New contents are currently being uploaded.</p>
+                                              <div class="spin-text">please reload!!!...</div>
+                                          </div>
+                                    </div>
+                                                        
+                                {% endif %}
+                                                    
+                        </div>
+                        
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if page_obj.has_previous %}
+                                    <button><a href="?page=1">first</a></button>
+                                    <button><a href="?page={{ page_obj.previous_page_number }}">previous</a></button>
+                                    {% else %}
+                                    <button disabled><a>first</a></button>
+                                    <button disabled><a>previous</a></button>
+                                {% endif %}
+                        
+                                <span class="current-page badge bg-primary fs-4">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+            
+                        
+                                {% if page_obj.has_next %}
+                                
+                                    <button><a href="?page={{ page_obj.next_page_number }}">next</a></button>
+                                    <button><a href="?page={{ page_obj.paginator.num_pages }}">last</a></button>
+                                    {% else %}
+                                    <button disabled> <a>next</a></button>
+                                    <button disabled> <a>last</a></button>
+                                    
+                                {% endif %}
+                            </span>
+                        </div>
+                    </section>
+
+                    <section class="category shadow">
+                        <div class="category-header">
+                            <h2 class="category-title">Categories</h2>
+                        </div>
+
+                        <div class="row">
+                            
+                            
+                            {% if categories %}
+                            {% for item in categories %}
+                                <div class="col-6">
+                                    <div class="categories">
+                                        <div class="categories-name" style="background-image: url('{{item.image.url}}'); 
+                                                                            background-size: cover;
+                                                                            background-repeat: no-repeat;
+                                                                            background-position: center;">
+                                                        {{item.name}}
+                                        </div>
+                                        <div class="categories-post">
+                                            
+                                            {% for post in item.posts.all|slice:"-5:" %}
+                                                <!-- <div class="categories-post"><a href="{% url 'myblog:detail' post.slug%}">{{post.title}}</a></div> -->
+                                                <div class="category-post">
+                                                    <a href="{% url 'myblog:detail' post.slug %}">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-2 text-center fs-1">{{ forloop.counter }}</div>
+                                                                    <div class="col-8">{{post.title}}</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                
+                                            {% endfor %}
+                                            <div class="more-btn w-100 mt-4 mb-4">
+                                                <a href="{% url 'myblog:category' item.name %}">More Posts...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {% endif %}
+                                
+                                
+                        </div>
+
+
+                    </section>
+                </div>
+            </div>
+        </main>
+
+
+    </div>
+
+</div>
+
+
+
+
+{% endblock body %}
+    

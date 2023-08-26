@@ -1,0 +1,28 @@
+<aside class="col-3">
+    <div class="trending">
+        <div class="trending-posts">
+            <div class="trending-title"></div>
+            
+            {% if trends %}
+                
+                    {% for item in trends|slice:":10" %}
+                     
+                    <div class="trends">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="{{item.myfile.url}}" alt="{{item.title}}.svg" class="trends-image">
+                            </div>
+                            <div class="col-9">
+                                <a href="{% url 'myblog:detail' item.slug %}">{{item.title}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% endfor %}
+                
+                       
+            {% endif %}
+                
+        </div>
+    </div>
+</aside>

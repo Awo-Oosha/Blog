@@ -1,0 +1,44 @@
+*, *::before,*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+// color variables
+$color-primary: #004AAD;
+$color-black: #333;
+$color-white: #fff;
+
+// image variables
+
+// Transitions
+
+@mixin transitionEase {
+    transition: all 0.3s ease;
+}
+
+
+// Responsive 
+
+@mixin mobile_devices {
+    @media only screen and (max-width: 767px){
+        @content;
+    }
+}
+
+
+@mixin tablets_and_small_desktops {
+    @media only screen and (min-width: 768px) and (max-width: 1023px){
+        @content;
+    }
+}
+
+
+@mixin large_screens {
+    @media only screen and (min-width: 1024px){
+        @content;
+    }
+}
